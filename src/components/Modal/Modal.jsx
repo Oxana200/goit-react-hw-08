@@ -6,17 +6,17 @@ import {
   Button,
 } from '@mui/material';
 
-const Modal = ({ children, onClose, title = 'Редагування контакту', onSave }) => {
+const Modal = ({ children, onClose, title = 'Edit contact', onSave }) => {
   return (
     <Dialog open={true} onClose={onClose} maxWidth="xs" fullWidth>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent dividers>{children}</DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="inherit">
-          Скасувати
+        Cancel
         </Button>
         <Button onClick={onSave} variant="contained">
-          Зберегти
+          Save
         </Button>
       </DialogActions>
     </Dialog>

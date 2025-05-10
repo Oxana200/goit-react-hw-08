@@ -41,7 +41,7 @@ const EditContactForm = ({ contact, onClose }) => {
           sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 1 }}
         >
           <TextField
-            label="Ім’я"
+            label="Name"
             name="name"
             value={values.name}
             onChange={handleChange}
@@ -50,7 +50,7 @@ const EditContactForm = ({ contact, onClose }) => {
             fullWidth
           />
           <TextField
-            label="Телефон"
+            label="Number"
             name="number"
             value={values.number}
             onChange={handleChange}

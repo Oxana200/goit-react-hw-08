@@ -39,13 +39,13 @@ const RegistrationForm = () => {
     <Container maxWidth="xs">
       <Paper elevation={3} sx={{ p: 4, mt: 6 }}>
         <Typography variant="h6" align="center" gutterBottom>
-          Реєстрація
+        Sign up
         </Typography>
         <Box component="form" onSubmit={handleSubmit} className={css.form}>
           <TextField
             fullWidth
             margin="normal"
-            label="Ваше ім’я"
+            label="Name"
             type="text"
             name="name"
             value={name}
@@ -55,7 +55,7 @@ const RegistrationForm = () => {
           <TextField
             fullWidth
             margin="normal"
-            label="Електронна пошта"
+            label="Email"
             type="email"
             name="email"
             value={email}
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
           <TextField
             fullWidth
             margin="normal"
-            label="Пароль"
+            label="Password"
             type="password"
             name="password"
             value={password}
@@ -73,7 +73,7 @@ const RegistrationForm = () => {
             required
           />
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
-            Зареєструватися
+          Sign up
           </Button>
         </Box>
       </Paper>

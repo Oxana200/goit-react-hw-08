@@ -12,7 +12,7 @@ const Filter = () => {
   return (
     <Box sx={{ mt: 2 }}>
       <TextField
-        label="Пошук за ім’ям або номером"
+        label="Search by name or number"
         type="text"
         variant="outlined"
         fullWidth

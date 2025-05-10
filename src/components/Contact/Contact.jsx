@@ -59,18 +59,18 @@ const Contact = ({ contact }) => {
       </Card>
 
       <Dialog open={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)}>
-        <DialogTitle>Підтвердження видалення</DialogTitle>
+        <DialogTitle>Delete confirmation</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Ви справді хочете видалити цей контакт?
+          Are you sure you want to delete this contact?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setIsDeleteModalOpen(false)} color="inherit">
-            Скасувати
+          Cancel
           </Button>
           <Button onClick={handleDelete} variant="contained" color="error">
-            Видалити
+            Delete
           </Button>
         </DialogActions>
       </Dialog>

@@ -5,7 +5,7 @@ const filtersSlice = createSlice({
     initialState: '',
     reducers: {
         setFilter: (_, action) => action.payload,
-        resetFilter: () => '', // ⬅️ очищення після додавання
+        resetFilter: () => '',
     },
 });
 

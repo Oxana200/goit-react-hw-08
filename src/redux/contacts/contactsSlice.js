@@ -13,7 +13,7 @@ const contactsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(fetchContacts.fulfilled, (_, action) => {
-                return action.payload; // обов’язково ПОВЕРТАЄМО payload
+                return action.payload;
             })
             .addCase(addContact.fulfilled, (state, action) => {
                 state.push(action.payload);

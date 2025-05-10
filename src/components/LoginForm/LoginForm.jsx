@@ -37,13 +37,13 @@ const LoginForm = () => {
     <Container maxWidth="xs">
       <Paper elevation={3} sx={{ p: 4, mt: 6 }}>
         <Typography variant="h6" align="center" gutterBottom>
-          Вхід до акаунту
+          Login to your account
         </Typography>
         <Box component="form" onSubmit={handleSubmit} className={css.form}>
           <TextField
             fullWidth
             margin="normal"
-            label="Електронна пошта"
+            label="Email"
             type="email"
             name="email"
             value={email}
@@ -53,7 +53,7 @@ const LoginForm = () => {
           <TextField
             fullWidth
             margin="normal"
-            label="Пароль"
+            label="Password"
             type="password"
             name="password"
             value={password}
@@ -61,7 +61,7 @@ const LoginForm = () => {
             required
           />
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
-            Увійти
+          Log in
           </Button>
         </Box>
       </Paper>

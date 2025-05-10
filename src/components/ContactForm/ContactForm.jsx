@@ -48,13 +48,13 @@ const ContactForm = () => {
     <Container maxWidth="sm">
       <Paper elevation={3} sx={{ p: 4, mt: 4 }}>
         <Typography variant="h6" align="center" gutterBottom>
-          Додати контакт
+          Add contact
         </Typography>
         <Box component="form" onSubmit={handleSubmit} className={css.form}>
           <TextField
             fullWidth
             margin="normal"
-            label="Ім’я"
+            label="Name"
             type="text"
             name="name"
             value={name}
@@ -64,7 +64,7 @@ const ContactForm = () => {
           <TextField
             fullWidth
             margin="normal"
-            label="Телефон"
+            label="Number"
             type="tel"
             name="number"
             value={number}
@@ -72,7 +72,7 @@ const ContactForm = () => {
             required
           />
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
-            Додати
+            Add
           </Button>
         </Box>
       </Paper>
