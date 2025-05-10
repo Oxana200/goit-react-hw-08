@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { editContact } from '../../redux/contacts/contactsOperations';
+import { editContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
 
 import { TextField, Box } from '@mui/material';

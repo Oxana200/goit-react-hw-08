@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, fetchContacts } from '../../redux/contacts/contactsOperations';
-import { selectContacts } from '../../redux/contacts/contactsSelectors';
-import { resetFilter } from '../../redux/filters/filtersSlice';
+import { addContact, fetchContacts } from '../../redux/contacts/operations';
+import { selectContacts } from '../../redux/contacts/selectors';
+import { resetFilter } from '../../redux/filters/slice';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import css from './ContactForm.module.css';

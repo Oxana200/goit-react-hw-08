@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/contactsOperations';
+import { deleteContact } from '../../redux/contacts/operations';
 import Modal from '../Modal/Modal';
 import EditContactForm from '../EditContactForm/EditContactForm';
 import toast from 'react-hot-toast';

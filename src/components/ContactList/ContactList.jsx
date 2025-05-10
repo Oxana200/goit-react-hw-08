@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/contacts/contactsSelectors';
-import { selectFilter } from '../../redux/filters/filterSelectors';
+import { selectContacts } from '../../redux/contacts/selectors';
+import { selectFilter } from '../../redux/filters/selectors';
 import Contact from '../Contact/Contact';
 
 import { Box, Typography } from '@mui/material';
