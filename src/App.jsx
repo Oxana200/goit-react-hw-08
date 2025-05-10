@@ -1,7 +1,7 @@
-// src/App.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 import { refreshUser } from './redux/auth/authOperations';
 import { selectIsRefreshing } from './redux/auth/authSelectors';
@@ -26,15 +26,27 @@ const App = () => {
   return isRefreshing ? (
     <p>Loading...</p>
   ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/register" element={<RestrictedRoute element={<RegistrationPage />} />} />
-        <Route path="/login" element={<RestrictedRoute element={<LoginPage />} />} />
-        <Route path="/contacts" element={<PrivateRoute element={<ContactsPage />} />} />
-        <Route path="*" element={<HomePage />} />
-      </Route>
-    </Routes>
+    <>
+      <Toaster position="top-right" reverseOrder={false} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/register"
+            element={<RestrictedRoute element={<RegistrationPage />} />}
+          />
+          <Route
+            path="/login"
+            element={<RestrictedRoute element={<LoginPage />} />}
+          />
+          <Route
+            path="/contacts"
+            element={<PrivateRoute element={<ContactsPage />} />}
+          />
+          <Route path="*" element={<HomePage />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
