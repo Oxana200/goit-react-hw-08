@@ -20,7 +20,7 @@ const ContactList = () => {
   if (visibleContacts.length === 0) {
     return (
       <Typography variant="body1" align="center" sx={{ mt: 4 }}>
-        Контакти не знайдено.
+        No contacts found.
       </Typography>
     );
   }
