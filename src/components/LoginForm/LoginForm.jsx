@@ -4,6 +4,8 @@ import { login } from '../../redux/auth/authOperations';
 import toast from 'react-hot-toast';
 import css from './LoginForm.module.css';
 
+import { Box, TextField, Button, Paper, Container, Typography } from '@mui/material';
+
 const LoginForm = () => {
   const dispatch = useDispatch();
 
@@ -32,25 +34,38 @@ const LoginForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <input
-        type="email"
-        name="email"
-        placeholder="Електронна пошта"
-        value={email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Пароль"
-        value={password}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Увійти</button>
-    </form>
+    <Container maxWidth="xs">
+      <Paper elevation={3} sx={{ p: 4, mt: 6 }}>
+        <Typography variant="h6" align="center" gutterBottom>
+          Вхід до акаунту
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} className={css.form}>
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Електронна пошта"
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Пароль"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
+            Увійти
+          </Button>
+        </Box>
+      </Paper>
+    </Container>
   );
 };
 

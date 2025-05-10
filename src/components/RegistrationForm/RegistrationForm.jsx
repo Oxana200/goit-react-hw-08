@@ -4,6 +4,8 @@ import { register } from '../../redux/auth/authOperations';
 import toast from 'react-hot-toast';
 import css from './RegistrationForm.module.css';
 
+import { Box, TextField, Button, Paper, Container, Typography } from '@mui/material';
+
 const RegistrationForm = () => {
   const dispatch = useDispatch();
 
@@ -34,33 +36,48 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Ваше ім’я"
-        value={name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Електронна пошта"
-        value={email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Пароль"
-        value={password}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Зареєструватися</button>
-    </form>
+    <Container maxWidth="xs">
+      <Paper elevation={3} sx={{ p: 4, mt: 6 }}>
+        <Typography variant="h6" align="center" gutterBottom>
+          Реєстрація
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} className={css.form}>
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Ваше ім’я"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Електронна пошта"
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Пароль"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
+            Зареєструватися
+          </Button>
+        </Box>
+      </Paper>
+    </Container>
   );
 };
 

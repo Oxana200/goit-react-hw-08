@@ -1,24 +1,25 @@
-// components/Modal/Modal.jsx
-import { useEffect } from 'react';
-import css from './Modal.module.css';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+} from '@mui/material';
 
-const Modal = ({ children, onClose }) => {
-  useEffect(() => {
-    const handleEsc = e => {
-      if (e.code === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
-
-  const handleBackdropClick = e => {
-    if (e.target === e.currentTarget) onClose();
-  };
-
+const Modal = ({ children, onClose, title = 'Редагування контакту', onSave }) => {
   return (
-    <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={css.modal}>{children}</div>
-    </div>
+    <Dialog open={true} onClose={onClose} maxWidth="xs" fullWidth>
+      <DialogTitle>{title}</DialogTitle>
+      <DialogContent dividers>{children}</DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} color="inherit">
+          Скасувати
+        </Button>
+        <Button onClick={onSave} variant="contained">
+          Зберегти
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 

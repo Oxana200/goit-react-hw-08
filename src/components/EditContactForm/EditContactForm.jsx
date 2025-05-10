@@ -1,9 +1,10 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { editContact } from '../../redux/contacts/contactsOperations';
 import toast from 'react-hot-toast';
-import css from './EditContactForm.module.css';
+
+import { TextField, Box } from '@mui/material';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
@@ -13,7 +14,7 @@ const validationSchema = Yup.object().shape({
 const EditContactForm = ({ contact, onClose }) => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = values => {
     dispatch(editContact({ id: contact.id, ...values }))
       .unwrap()
       .then(() => {
@@ -31,29 +32,33 @@ const EditContactForm = ({ contact, onClose }) => {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      {({ errors, touched }) => (
-        <Form className={css.form}>
-          <label>
-            Name:
-            <Field name="name" />
-            {touched.name && errors.name && (
-              <div className={css.error}>{errors.name}</div>
-            )}
-          </label>
-          <label>
-            Number:
-            <Field name="number" />
-            {touched.number && errors.number && (
-              <div className={css.error}>{errors.number}</div>
-            )}
-          </label>
-          <div className={css.actions}>
-            <button type="submit">Save</button>
-            <button type="button" onClick={onClose}>
-              Cancel
-            </button>
-          </div>
-        </Form>
+      {({ errors, touched, handleChange, handleSubmit, values }) => (
+        <Box
+          component="form"
+          id="edit-form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 1 }}
+        >
+          <TextField
+            label="Ім’я"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            error={Boolean(touched.name && errors.name)}
+            helperText={touched.name && errors.name}
+            fullWidth
+          />
+          <TextField
+            label="Телефон"
+            name="number"
+            value={values.number}
+            onChange={handleChange}
+            error={Boolean(touched.number && errors.number)}
+            helperText={touched.number && errors.number}
+            fullWidth
+          />
+        </Box>
       )}
     </Formik>
   );

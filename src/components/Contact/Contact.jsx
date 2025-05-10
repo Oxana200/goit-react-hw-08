@@ -4,7 +4,22 @@ import { deleteContact } from '../../redux/contacts/contactsOperations';
 import Modal from '../Modal/Modal';
 import EditContactForm from '../EditContactForm/EditContactForm';
 import toast from 'react-hot-toast';
-import css from './Contact.module.css';
+
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from '@mui/material';
+
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -21,32 +36,54 @@ const Contact = ({ contact }) => {
   };
 
   return (
-    <li className={css.contactItem}>
-      <p className={css.contactText}>
-        {contact.name}: {contact.number}
-      </p>
+    <>
+      <Card variant="outlined">
+        <CardContent>
+          <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <PersonIcon fontSize="small" />
+            {contact.name}
+          </Typography>
+          <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <PhoneIcon fontSize="small" />
+            {contact.number}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ justifyContent: 'flex-end', px: 2 }}>
+          <Button variant="outlined" size="small" onClick={() => setIsEditModalOpen(true)}>
+            Edit
+          </Button>
+          <Button variant="contained" color="error" size="small" onClick={() => setIsDeleteModalOpen(true)}>
+            Delete
+          </Button>
+        </CardActions>
+      </Card>
 
-      <div className={css.buttons}>
-        <button onClick={() => setIsEditModalOpen(true)}>Edit</button>
-        <button onClick={() => setIsDeleteModalOpen(true)}>Delete</button>
-      </div>
-
-      {isDeleteModalOpen && (
-        <Modal onClose={() => setIsDeleteModalOpen(false)}>
-          <p>Are you sure you want to delete this contact?</p>
-          <div className={css.modalActions}>
-            <button onClick={handleDelete}>Yes</button>
-            <button onClick={() => setIsDeleteModalOpen(false)}>Cancel</button>
-          </div>
-        </Modal>
-      )}
+      <Dialog open={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)}>
+        <DialogTitle>Підтвердження видалення</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Ви справді хочете видалити цей контакт?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setIsDeleteModalOpen(false)} color="inherit">
+            Скасувати
+          </Button>
+          <Button onClick={handleDelete} variant="contained" color="error">
+            Видалити
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       {isEditModalOpen && (
-        <Modal onClose={() => setIsEditModalOpen(false)}>
+        <Modal
+          onClose={() => setIsEditModalOpen(false)}
+          onSave={() => document.getElementById('edit-form')?.requestSubmit()}
+        >
           <EditContactForm contact={contact} onClose={() => setIsEditModalOpen(false)} />
         </Modal>
       )}
-    </li>
+    </>
   );
 };
 

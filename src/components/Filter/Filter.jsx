@@ -1,29 +1,26 @@
-// components/Filter/Filter.jsx
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filters/filtersSlice';
-import { selectFilter } from '../../redux/filters/filterSelectors';
-import css from './Filter.module.css';
+import { TextField, Box } from '@mui/material';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
 
   const handleChange = e => {
     dispatch(setFilter(e.target.value));
   };
 
   return (
-    <div className={css.filterContainer}>
-      <label className={css.label}>Find contacts by name or number</label>
-      <input
-        className={css.input}
+    <Box sx={{ mt: 2 }}>
+      <TextField
+        label="Пошук за ім’ям або номером"
         type="text"
-        value={filter}
+        variant="outlined"
+        fullWidth
         onChange={handleChange}
-        placeholder="Search..."
       />
-    </div>
+    </Box>
   );
 };
 
 export default Filter;
+

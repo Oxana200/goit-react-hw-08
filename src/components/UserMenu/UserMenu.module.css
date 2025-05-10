@@ -1,0 +1,33 @@
+.userMenu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: max-content;
+}
+
+.userName {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.logoutButton {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    background-color: #fff;
+    color: #1976d2;
+    text-transform: none;
+    min-width: 100px;
+    white-space: nowrap;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+    background-color: #f0f0f0;
+}

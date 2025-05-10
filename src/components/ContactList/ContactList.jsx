@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/contacts/contactsSelectors';
 import { selectFilter } from '../../redux/filters/filterSelectors';
 import Contact from '../Contact/Contact';
-import css from './ContactList.module.css';
+
+import { Box, Typography } from '@mui/material';
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts) || [];
@@ -10,23 +11,39 @@ const ContactList = () => {
 
   const normalizedFilter = filter.toLowerCase();
 
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter) ||
-    contact.number.includes(normalizedFilter)
+  const visibleContacts = contacts.filter(
+    contact =>
+      contact.name.toLowerCase().includes(normalizedFilter) ||
+      contact.number.includes(normalizedFilter)
   );
 
   if (visibleContacts.length === 0) {
-    return <p>No contacts found.</p>;
+    return (
+      <Typography variant="body1" align="center" sx={{ mt: 4 }}>
+        Контакти не знайдено.
+      </Typography>
+    );
   }
 
   return (
-    <ul className={css.list}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 2,
+        mt: 4,
+        justifyContent: 'center',
+      }}
+    >
       {visibleContacts.map(contact => (
-        <Contact key={contact.id} contact={contact} />
+        <Box key={contact.id} sx={{ flex: '1 1 300px', maxWidth: 400 }}>
+          <Contact contact={contact} />
+        </Box>
       ))}
-    </ul>
+    </Box>
   );
 };
 
 export default ContactList;
+
 

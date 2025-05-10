@@ -6,6 +6,8 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import css from './ContactForm.module.css';
 
+import { Box, TextField, Button, Paper, Container, Typography } from '@mui/material';
+
 const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts) || [];
@@ -37,31 +39,44 @@ const ContactForm = () => {
         setName('');
         setNumber('');
         dispatch(resetFilter());
-        dispatch(fetchContacts()); // ⬅️ підтягує список заново
+        dispatch(fetchContacts());
       })
       .catch(() => toast.error('Не вдалося додати контакт.'));
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="tel"
-        name="number"
-        placeholder="Phone"
-        value={number}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Add Contact</button>
-    </form>
+    <Container maxWidth="sm">
+      <Paper elevation={3} sx={{ p: 4, mt: 4 }}>
+        <Typography variant="h6" align="center" gutterBottom>
+          Додати контакт
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} className={css.form}>
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Ім’я"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Телефон"
+            type="tel"
+            name="number"
+            value={number}
+            onChange={handleChange}
+            required
+          />
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
+            Додати
+          </Button>
+        </Box>
+      </Paper>
+    </Container>
   );
 };
 
