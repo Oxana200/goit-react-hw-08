@@ -1,3 +1,4 @@
+// src/App.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
@@ -28,24 +29,9 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<RegistrationPage />} />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-          }
-        />
+        <Route path="/register" element={<RestrictedRoute element={<RegistrationPage />} />} />
+        <Route path="/login" element={<RestrictedRoute element={<LoginPage />} />} />
+        <Route path="/contacts" element={<PrivateRoute element={<ContactsPage />} />} />
         <Route path="*" element={<HomePage />} />
       </Route>
     </Routes>
@@ -53,4 +39,3 @@ const App = () => {
 };
 
 export default App;
-
