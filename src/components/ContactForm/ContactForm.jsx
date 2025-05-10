@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contacts/contactsOperations';
+import { addContact, fetchContacts } from '../../redux/contacts/contactsOperations';
 import { selectContacts } from '../../redux/contacts/contactsSelectors';
+import { resetFilter } from '../../redux/filters/filtersSlice';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import css from './ContactForm.module.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts) || [];
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -35,6 +36,8 @@ const ContactForm = () => {
         toast.success('Контакт додано!');
         setName('');
         setNumber('');
+        dispatch(resetFilter());
+        dispatch(fetchContacts()); // ⬅️ підтягує список заново
       })
       .catch(() => toast.error('Не вдалося додати контакт.'));
   };

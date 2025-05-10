@@ -5,8 +5,9 @@ const filtersSlice = createSlice({
     initialState: '',
     reducers: {
         setFilter: (_, action) => action.payload,
+        resetFilter: () => '', // ⬅️ очищення після додавання
     },
 });
 
-export const { setFilter } = filtersSlice.actions;
+export const { setFilter, resetFilter } = filtersSlice.actions;
 export default filtersSlice.reducer;

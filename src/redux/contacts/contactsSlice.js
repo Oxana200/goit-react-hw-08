@@ -1,38 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOperations';
+import {
+    fetchContacts,
+    addContact,
+    deleteContact,
+    editContact,
+} from './contactsOperations';
 import { logout } from '../auth/authOperations';
 
 const contactsSlice = createSlice({
     name: 'contacts',
-    initialState: {
-        items: [],
-        isLoading: false,
-        error: null,
-    },
+    initialState: [],
     extraReducers: builder => {
         builder
-            .addCase(fetchContacts.pending, state => {
-                state.isLoading = true;
+            .addCase(fetchContacts.fulfilled, (_, action) => {
+                return action.payload; // обов’язково ПОВЕРТАЄМО payload
             })
-            .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-                state.isLoading = false;
-                state.items = payload;
+            .addCase(addContact.fulfilled, (state, action) => {
+                state.push(action.payload);
             })
-            .addCase(fetchContacts.rejected, (state, { payload }) => {
-                state.isLoading = false;
-                state.error = payload;
+            .addCase(deleteContact.fulfilled, (state, action) => {
+                return state.filter(contact => contact.id !== action.payload);
             })
-            .addCase(addContact.fulfilled, (state, { payload }) => {
-                state.items.push(payload);
+            .addCase(editContact.fulfilled, (state, action) => {
+                return state.map(contact =>
+                    contact.id === action.payload.id ? action.payload : contact
+                );
             })
-            .addCase(deleteContact.fulfilled, (state, { payload }) => {
-                state.items = state.items.filter(contact => contact.id !== payload.id);
-            })
-            .addCase(logout.fulfilled, state => {
-                state.items = [];
-                state.isLoading = false;
-                state.error = null;
-            });
+            .addCase(logout.fulfilled, () => []);
     },
 });
 

@@ -8,7 +8,7 @@ const setAuthHeader = token => {
 };
 
 const clearAuthHeader = () => {
-    axios.defaults.headers.common.Authorization = '';
+    delete axios.defaults.headers.common.Authorization;
 };
 
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
@@ -42,14 +42,12 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
 export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const token = state.auth.token;
 
-    if (!persistedToken) {
-        return thunkAPI.rejectWithValue('No token found');
-    }
+    if (!token) return thunkAPI.rejectWithValue('No token');
 
     try {
-        setAuthHeader(persistedToken);
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
         const res = await axios.get('/users/current');
         return res.data;
     } catch (e) {
