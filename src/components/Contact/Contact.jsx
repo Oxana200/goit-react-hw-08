@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/operations';
+import { deleteContact } from '../../redux/contacts/contactsOperations';
 import { FaUser, FaPhone } from 'react-icons/fa';
 
 const formatPhone = number => number.replace(/\s*(x|ext)\s*\d+$/i, '').trim();
