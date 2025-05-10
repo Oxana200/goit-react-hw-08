@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { login } from '../../redux/auth/authOperations';
+import { login } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 import css from './LoginForm.module.css';
 
