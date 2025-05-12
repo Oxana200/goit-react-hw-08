@@ -4,12 +4,11 @@ import { Stack, Button } from '@mui/material';
 
 const AuthNav = () => {
   return (
-    <div className={css.authNav}>
+    <div>
       <Stack direction="row" spacing={2}>
         <Button
           component={NavLink}
           to="/register"
-          className={css.link}
           color="inherit"
         >
           Register
@@ -17,7 +16,6 @@ const AuthNav = () => {
         <Button
           component={NavLink}
           to="/login"
-          className={css.link}
           color="inherit"
         >
           Login

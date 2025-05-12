@@ -4,12 +4,11 @@ import { Stack, Button } from '@mui/material';
 
 const Navigation = () => {
   return (
-    <nav className={css.nav}>
+    <nav>
       <Stack direction="row" spacing={2}>
         <Button
           component={NavLink}
           to="/"
-          className={css.link}
           color="inherit"
         >
           Home
@@ -17,7 +16,6 @@ const Navigation = () => {
         <Button
           component={NavLink}
           to="/contacts"
-          className={css.link}
           color="inherit"
         >
           Contacts

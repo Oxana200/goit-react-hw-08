@@ -49,7 +49,7 @@ const ContactForm = () => {
         <Typography variant="h6" align="center" gutterBottom>
           Add contact
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} className={css.form}>
+        <Box component="form" onSubmit={handleSubmit}>
           <TextField
             fullWidth
             margin="normal"

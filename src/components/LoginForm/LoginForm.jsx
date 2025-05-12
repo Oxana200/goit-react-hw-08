@@ -38,7 +38,7 @@ const LoginForm = () => {
         <Typography variant="h6" align="center" gutterBottom>
           Login to your account
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} className={css.form}>
+        <Box component="form" onSubmit={handleSubmit}>
           <TextField
             fullWidth
             margin="normal"

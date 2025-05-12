@@ -40,7 +40,7 @@ const RegistrationForm = () => {
         <Typography variant="h6" align="center" gutterBottom>
         Sign up
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} className={css.form}>
+        <Box component="form" onSubmit={handleSubmit}>
           <TextField
             fullWidth
             margin="normal"
