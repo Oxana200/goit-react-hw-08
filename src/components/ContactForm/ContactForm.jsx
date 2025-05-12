@@ -4,7 +4,6 @@ import { selectContacts } from '../../redux/contacts/selectors';
 import { resetFilter } from '../../redux/filters/slice';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import css from './ContactForm.module.css';
 
 import { Box, TextField, Button, Paper, Container, Typography } from '@mui/material';
 

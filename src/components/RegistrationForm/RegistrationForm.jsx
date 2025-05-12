@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { register } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
-import css from './RegistrationForm.module.css';
 
 import { Box, TextField, Button, Paper, Container, Typography } from '@mui/material';
 

@@ -23,9 +23,11 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <p>Loading...</p>
-  ) : (
+  if (isRefreshing) {
+    return <p>Loading...</p>;
+  }
+
+  return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
